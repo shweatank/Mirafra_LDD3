@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/kernal/driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/kernal/driver.ko /home/mirafra/pritesh/code/kernal/driver.o /home/mirafra/pritesh/code/kernal/driver.mod.o
