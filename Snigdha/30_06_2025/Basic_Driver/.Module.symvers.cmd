@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/30_06_2025/Basic_Driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/Snigdha/Snigdha/30_06_2025/Basic_Driver/Module.symvers -T /home/mirafra/Desktop/Snigdha/Snigdha/30_06_2025/Basic_Driver/modules.order -i Module.symvers -e 

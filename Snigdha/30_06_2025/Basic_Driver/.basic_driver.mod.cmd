@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/30_06_2025/Basic_Driver/basic_driver.mod := printf '%s\n'   basic_driver.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/Snigdha/Snigdha/30_06_2025/Basic_Driver/"$$0) }' > /home/mirafra/Desktop/Snigdha/Snigdha/30_06_2025/Basic_Driver/basic_driver.mod
