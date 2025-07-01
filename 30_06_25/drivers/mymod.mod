@@ -1,0 +1,2 @@
+/home/mirafra/ldd/30_06_25/drivers/mymod.o
+
