@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/driver/simple_cal/simple_cal.mod := printf '%s\n'   simple_cal.o | awk '!x[$$0]++ { print("/home/mirafra/pritesh/code/driver/simple_cal/"$$0) }' > /home/mirafra/pritesh/code/driver/simple_cal/simple_cal.mod

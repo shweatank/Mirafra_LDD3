@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/driver/reverse/reverse.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/driver/reverse/reverse.ko /home/mirafra/pritesh/code/driver/reverse/reverse.o /home/mirafra/pritesh/code/driver/reverse/reverse.mod.o

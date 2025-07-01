@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/driver/simple_cal/simple_cal.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/driver/simple_cal/simple_cal.ko /home/mirafra/pritesh/code/driver/simple_cal/simple_cal.o /home/mirafra/pritesh/code/driver/simple_cal/simple_cal.mod.o
