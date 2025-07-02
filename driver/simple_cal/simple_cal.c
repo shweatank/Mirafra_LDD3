@@ -1,4 +1,4 @@
-// SPDX‑License‑Identifier: GPL‑2.0
+// iSPDX‑License‑Identifier: GPL‑2.0
 #include <linux/cdev.h>
 #include <linux/fs.h>
 #include <linux/init.h>

@@ -5,7 +5,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#define DEV_PATH "/dev/simple_calc_dev"
+#define DEV_PATH "/dev/simple_cal"
 
 static int do_op(const char *op, long a, long b)
 {
