@@ -1,0 +1,1 @@
+cmd_/home/mirafra/LDD_training/device_driver/interrupt/calculator/modules.order := {   echo /home/mirafra/LDD_training/device_driver/interrupt/calculator/keyboard_driver.o; :; } > /home/mirafra/LDD_training/device_driver/interrupt/calculator/modules.order

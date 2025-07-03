@@ -1,0 +1,1 @@
+cmd_/home/mirafra/LDD_training/device_driver/interrupt/calculator/keyboard_driver.mod := printf '%s\n'   keyboard_driver.o | awk '!x[$$0]++ { print("/home/mirafra/LDD_training/device_driver/interrupt/calculator/"$$0) }' > /home/mirafra/LDD_training/device_driver/interrupt/calculator/keyboard_driver.mod

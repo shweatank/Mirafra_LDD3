@@ -1,0 +1,1 @@
+cmd_/home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/key_d.mod := printf '%s\n'   key_d.o | awk '!x[$$0]++ { print("/home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/"$$0) }' > /home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/key_d.mod

@@ -1,0 +1,1 @@
+cmd_/home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/Module.symvers :=  scripts/mod/modpost -m -a     -o /home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/Module.symvers -T /home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/modules.order -i Module.symvers -e 

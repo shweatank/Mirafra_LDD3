@@ -1,0 +1,1 @@
+cmd_/home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/modules.order := {   echo /home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/key_d.o; :; } > /home/mirafra/LDD_training/device_driver/interrupt/calculator/prac/modules.order
