@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/2_07_25/drivers/ioctl/mymodule.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd/2_07_25/drivers/ioctl/mymodule.ko /home/mirafra/ldd/2_07_25/drivers/ioctl/mymodule.o /home/mirafra/ldd/2_07_25/drivers/ioctl/mymodule.mod.o;  true

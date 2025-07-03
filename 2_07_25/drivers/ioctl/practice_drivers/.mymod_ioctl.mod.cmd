@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/2_07_25/drivers/ioctl/practice_drivers/mymod_ioctl.mod := { echo  /home/mirafra/ldd/2_07_25/drivers/ioctl/practice_drivers/mymod_ioctl.o;  echo; } > /home/mirafra/ldd/2_07_25/drivers/ioctl/practice_drivers/mymod_ioctl.mod

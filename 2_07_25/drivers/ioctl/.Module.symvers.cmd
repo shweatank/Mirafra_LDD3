@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/2_07_25/drivers/ioctl/Module.symvers := sed 's/\.ko$$/\.o/' /home/mirafra/ldd/2_07_25/drivers/ioctl/modules.order | scripts/mod/modpost -m -a  -o /home/mirafra/ldd/2_07_25/drivers/ioctl/Module.symvers -e -i Module.symvers   -T -
