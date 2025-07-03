@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/LDD_training/ioctl/driver_ioctl1.mod := printf '%s\n'   driver_ioctl1.o | awk '!x[$$0]++ { print("/home/mirafra/LDD_training/ioctl/"$$0) }' > /home/mirafra/LDD_training/ioctl/driver_ioctl1.mod
