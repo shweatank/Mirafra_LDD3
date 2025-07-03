@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/ldd_training/01_07/enum_driver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd_training/01_07/enum_driver.ko /home/mirafra/ldd_training/01_07/enum_driver.o /home/mirafra/ldd_training/01_07/enum_driver.mod.o

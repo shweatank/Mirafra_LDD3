@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/ldd_training/01_07/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/ldd_training/01_07/Module.symvers -T /home/mirafra/ldd_training/01_07/modules.order -i Module.symvers -e 

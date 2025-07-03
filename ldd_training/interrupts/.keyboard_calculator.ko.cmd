@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/ldd_training/interrupts/keyboard_calculator.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd_training/interrupts/keyboard_calculator.ko /home/mirafra/ldd_training/interrupts/keyboard_calculator.o /home/mirafra/ldd_training/interrupts/keyboard_calculator.mod.o
