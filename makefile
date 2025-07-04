@@ -1,7 +1,4 @@
-obj-m += ioctl_demo.o
-
-KDIR :=/lib/modules/$(shell uname -r)/build
-PWD := $(shell pwd)
+obj-m += basic_kernel.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules

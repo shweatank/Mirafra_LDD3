@@ -1,0 +1,1 @@
+savedcmd_/home/lenovo/home/ldd/keyboard/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/lenovo/home/ldd/keyboard/Module.symvers -T /home/lenovo/home/ldd/keyboard/modules.order -i Module.symvers -e 
