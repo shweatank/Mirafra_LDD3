@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/keycalc.mod := printf '%s\n'   keycalc.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/"$$0) }' > /home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/keycalc.mod

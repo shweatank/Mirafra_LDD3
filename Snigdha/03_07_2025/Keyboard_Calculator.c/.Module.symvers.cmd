@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/Module.symvers -T /home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/modules.order -i Module.symvers -e 

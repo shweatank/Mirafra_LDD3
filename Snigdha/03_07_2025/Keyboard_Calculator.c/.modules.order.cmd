@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/modules.order := {   echo /home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/keycalc.o; :; } > /home/mirafra/Desktop/Snigdha/Snigdha/03_07_2025/Keyboard_Calculator.c/modules.order

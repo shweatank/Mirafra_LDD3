@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/Project_Week2/int_calc.mod := printf '%s\n'   int_calc.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/Snigdha/Snigdha/Project_Week2/"$$0) }' > /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week2/int_calc.mod

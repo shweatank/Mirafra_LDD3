@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/Project_Week2/int_calc.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week2/int_calc.ko /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week2/int_calc.o /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week2/int_calc.mod.o
