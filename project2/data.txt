@@ -1,0 +1,18 @@
+static DECLARE_WAIT_QUEUE_HEAD(sc_wq);
+This macro:
+    Declares a variable of type wait_queue_head_t,
+    Initializes it using init_waitqueue_head().
+    
+    wait_queue_head_t sc_wq;
+    init_waitqueue_head(&sc_wq);
+    
+This declares and initializes a wait queue head named sc_wq as a static global variable in the kernel module.
+
+A wait queue in Linux is a kernel mechanism used for managing sleeping (blocked) processes. It allows a process to sleep (i.e., voluntarily stop running) until a particular condition becomes true — for example:
+
+    data becomes available,
+    an event happens,
+    hardware triggers an interrupt, etc.
+
+Think of it as:
+    "Put this process to sleep until something wakes it up."
