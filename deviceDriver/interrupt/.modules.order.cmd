@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/intterupt/modules.order := {   echo /home/sunny/training_LDD_mirafra/deviceDriver/intterupt/interrupt.ko; :; } | awk '!x[$$0]++' - > /home/sunny/training_LDD_mirafra/deviceDriver/intterupt/modules.order

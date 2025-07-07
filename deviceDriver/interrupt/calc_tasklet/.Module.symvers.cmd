@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/calc_tasklet/Module.symvers := sed 's/ko$$/o/' /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/calc_tasklet/modules.order | scripts/mod/modpost -m -a  -o /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/calc_tasklet/Module.symvers -e -i Module.symvers   -T -

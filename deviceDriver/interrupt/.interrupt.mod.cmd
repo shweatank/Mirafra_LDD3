@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/intterupt/interrupt.mod := printf '%s\n'   interrupt.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/deviceDriver/intterupt/"$$0) }' > /home/sunny/training_LDD_mirafra/deviceDriver/intterupt/interrupt.mod

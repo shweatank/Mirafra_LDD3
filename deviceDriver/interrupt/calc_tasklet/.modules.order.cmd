@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/calc_tasklet/modules.order := {   echo /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/calc_tasklet/interrupt.ko; :; } | awk '!x[$$0]++' - > /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/calc_tasklet/modules.order
