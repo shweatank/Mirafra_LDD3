@@ -1,0 +1,1 @@
+savedcmd_/home/lenovo/home/ldd/mouse_irq/mouse_irq.mod := printf '%s\n'   mouse_irq.o | awk '!x[$$0]++ { print("/home/lenovo/home/ldd/mouse_irq/"$$0) }' > /home/lenovo/home/ldd/mouse_irq/mouse_irq.mod

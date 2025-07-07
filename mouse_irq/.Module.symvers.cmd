@@ -1,0 +1,1 @@
+savedcmd_/home/lenovo/home/ldd/mouse_irq/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/lenovo/home/ldd/mouse_irq/Module.symvers -T /home/lenovo/home/ldd/mouse_irq/modules.order -i Module.symvers -e 
