@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/week2_project/vmem_driver.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/sunny/training_LDD_mirafra/week2_project/vmem_driver.ko /home/sunny/training_LDD_mirafra/week2_project/vmem_driver.o /home/sunny/training_LDD_mirafra/week2_project/vmem_driver.mod.o;  true

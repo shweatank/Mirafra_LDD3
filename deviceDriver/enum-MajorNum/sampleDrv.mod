@@ -1,0 +1,1 @@
+/home/sunny/training_LDD_mirafra/deviceDriver/enum-MajorNum/sampleDrv.o

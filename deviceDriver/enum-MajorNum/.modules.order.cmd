@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/enum-MajorNum/modules.order := {   echo /home/sunny/training_LDD_mirafra/deviceDriver/enum-MajorNum/sampleDrv.ko; :; } | awk '!x[$$0]++' - > /home/sunny/training_LDD_mirafra/deviceDriver/enum-MajorNum/modules.order

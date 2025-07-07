@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/sampleDrv.mod := printf '%s\n'   sampleDrv.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/deviceDriver/"$$0) }' > /home/sunny/training_LDD_mirafra/deviceDriver/sampleDrv.mod
