@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Workqueue/workqueue.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Workqueue/workqueue.ko /home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Workqueue/workqueue.o /home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Workqueue/workqueue.mod.o

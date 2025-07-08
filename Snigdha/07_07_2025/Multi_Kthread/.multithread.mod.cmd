@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Multi_Kthread/multithread.mod := printf '%s\n'   multithread.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Multi_Kthread/"$$0) }' > /home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Multi_Kthread/multithread.mod

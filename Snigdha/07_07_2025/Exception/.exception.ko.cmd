@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Exception/exception.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Exception/exception.ko /home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Exception/exception.o /home/mirafra/Desktop/Snigdha/Snigdha/07_07_2025/Exception/exception.mod.o
