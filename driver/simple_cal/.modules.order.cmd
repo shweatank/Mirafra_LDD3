@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/pritesh/code/driver/simple_cal/modules.order := {   echo /home/mirafra/pritesh/code/driver/simple_cal/simple_cal.o; :; } > /home/mirafra/pritesh/code/driver/simple_cal/modules.order

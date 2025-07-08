@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/pritesh/code/driver/reverse/reverse.mod := printf '%s\n'   reverse.o | awk '!x[$$0]++ { print("/home/mirafra/pritesh/code/driver/reverse/"$$0) }' > /home/mirafra/pritesh/code/driver/reverse/reverse.mod

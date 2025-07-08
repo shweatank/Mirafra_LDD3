@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/pritesh/code/ioctl/k_icl.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/ioctl/k_icl.ko /home/mirafra/pritesh/code/ioctl/k_icl.o /home/mirafra/pritesh/code/ioctl/k_icl.mod.o

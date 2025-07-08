@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/interrupt/int.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/interrupt/int.ko /home/mirafra/pritesh/code/interrupt/int.o /home/mirafra/pritesh/code/interrupt/int.mod.o

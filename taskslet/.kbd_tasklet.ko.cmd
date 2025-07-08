@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/taskslet/kbd_tasklet.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/taskslet/kbd_tasklet.ko /home/mirafra/pritesh/code/taskslet/kbd_tasklet.o /home/mirafra/pritesh/code/taskslet/kbd_tasklet.mod.o
