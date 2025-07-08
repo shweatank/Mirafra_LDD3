@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/7_07_25/drivers/interrupt/mouse_interrupt.mod := { echo  /home/mirafra/ldd/7_07_25/drivers/interrupt/mouse_interrupt.o;  echo; } > /home/mirafra/ldd/7_07_25/drivers/interrupt/mouse_interrupt.mod

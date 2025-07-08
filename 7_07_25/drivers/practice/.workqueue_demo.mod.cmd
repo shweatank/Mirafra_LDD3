@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/7_07_25/drivers/practice/workqueue_demo.mod := { echo  /home/mirafra/ldd/7_07_25/drivers/practice/workqueue_demo.o;  echo; } > /home/mirafra/ldd/7_07_25/drivers/practice/workqueue_demo.mod

@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/7_07_25/drivers/interrupt/mouse_interrupt.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd/7_07_25/drivers/interrupt/mouse_interrupt.ko /home/mirafra/ldd/7_07_25/drivers/interrupt/mouse_interrupt.o /home/mirafra/ldd/7_07_25/drivers/interrupt/mouse_interrupt.mod.o;  true
