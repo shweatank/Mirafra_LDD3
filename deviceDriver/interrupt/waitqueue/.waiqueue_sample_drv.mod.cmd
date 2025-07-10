@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/waiqueue_sample_drv.mod := printf '%s\n'   waiqueue_sample_drv.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/"$$0) }' > /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/waiqueue_sample_drv.mod

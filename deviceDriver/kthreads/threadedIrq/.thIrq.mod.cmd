@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadedIrq/thIrq.mod := printf '%s\n'   thIrq.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadedIrq/"$$0) }' > /home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadedIrq/thIrq.mod

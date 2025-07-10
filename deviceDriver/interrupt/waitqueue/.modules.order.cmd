@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/modules.order := {   echo /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/waiqueue_sample_drv.ko; :; } | awk '!x[$$0]++' - > /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/modules.order

@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadedIrq/modules.order := {   echo /home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadedIrq/thIrq.ko; :; } | awk '!x[$$0]++' - > /home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadedIrq/modules.order

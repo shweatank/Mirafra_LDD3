@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/calc/calc.mod := printf '%s\n'   calc.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/calc/"$$0) }' > /home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/calc/calc.mod

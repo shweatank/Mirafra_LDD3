@@ -1,0 +1,1 @@
+/home/sunny/training_LDD_mirafra/deviceDriver/interrupt/waitqueue/waiqueue_sample_drv.o

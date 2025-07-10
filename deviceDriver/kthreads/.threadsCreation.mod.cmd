@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadsCreation.mod := printf '%s\n'   threadsCreation.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/deviceDriver/kthreads/"$$0) }' > /home/sunny/training_LDD_mirafra/deviceDriver/kthreads/threadsCreation.mod
