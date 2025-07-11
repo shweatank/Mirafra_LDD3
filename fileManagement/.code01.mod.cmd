@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/fileManagement/code01.mod := printf '%s\n'   code01.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/fileManagement/"$$0) }' > /home/sunny/training_LDD_mirafra/fileManagement/code01.mod

@@ -1,0 +1,1 @@
+cmd_/home/sunny/training_LDD_mirafra/fileManagement/plateformDrv.mod := printf '%s\n'   plateformDrv.o | awk '!x[$$0]++ { print("/home/sunny/training_LDD_mirafra/fileManagement/"$$0) }' > /home/sunny/training_LDD_mirafra/fileManagement/plateformDrv.mod
