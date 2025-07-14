@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/filesystem/foo/fo.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/filesystem/foo/fo.ko /home/mirafra/pritesh/code/filesystem/foo/fo.o /home/mirafra/pritesh/code/filesystem/foo/fo.mod.o

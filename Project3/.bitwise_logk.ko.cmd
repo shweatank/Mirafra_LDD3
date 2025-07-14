@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/Project3/bitwise_logk.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/Project3/bitwise_logk.ko /home/mirafra/pritesh/code/Project3/bitwise_logk.o /home/mirafra/pritesh/code/Project3/bitwise_logk.mod.o

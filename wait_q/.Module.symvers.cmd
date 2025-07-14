@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/wait_q/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/pritesh/code/wait_q/Module.symvers -T /home/mirafra/pritesh/code/wait_q/modules.order -i Module.symvers -e 

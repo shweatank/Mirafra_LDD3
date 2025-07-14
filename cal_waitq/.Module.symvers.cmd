@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/cal_waitq/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/pritesh/code/cal_waitq/Module.symvers -T /home/mirafra/pritesh/code/cal_waitq/modules.order -i Module.symvers -e 

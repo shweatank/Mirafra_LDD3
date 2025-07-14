@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/cal_waitq/cal_waitq.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/cal_waitq/cal_waitq.ko /home/mirafra/pritesh/code/cal_waitq/cal_waitq.o /home/mirafra/pritesh/code/cal_waitq/cal_waitq.mod.o

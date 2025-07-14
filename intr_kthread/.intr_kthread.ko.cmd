@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/intr_kthread/intr_kthread.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/intr_kthread/intr_kthread.ko /home/mirafra/pritesh/code/intr_kthread/intr_kthread.o /home/mirafra/pritesh/code/intr_kthread/intr_kthread.mod.o

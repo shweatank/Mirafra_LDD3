@@ -1,0 +1,11 @@
+#ifndef BITWISE_IOCTL_H
+#define BITWISE_IOCTL_H
+
+#define MAX_PASS_LEN 31
+#define BITWISE_IOC_MAGIC 'b'
+
+#define BITWISE_SET_PASSWORD _IOW(BITWISE_IOC_MAGIC, 1, char[MAX_PASS_LEN + 1])
+#define BITWISE_SET_DATA     _IOW(BITWISE_IOC_MAGIC, 2, uint8_t)
+
+#endif
+

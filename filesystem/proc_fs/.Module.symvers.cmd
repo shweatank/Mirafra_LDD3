@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/filesystem/proc_fs/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/pritesh/code/filesystem/proc_fs/Module.symvers -T /home/mirafra/pritesh/code/filesystem/proc_fs/modules.order -i Module.symvers -e 

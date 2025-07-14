@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/Proj/kernel_log.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/Proj/kernel_log.ko /home/mirafra/pritesh/code/Proj/kernel_log.o /home/mirafra/pritesh/code/Proj/kernel_log.mod.o

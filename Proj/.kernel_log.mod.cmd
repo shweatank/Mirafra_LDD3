@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/Proj/kernel_log.mod := printf '%s\n'   kernel_log.o | awk '!x[$$0]++ { print("/home/mirafra/pritesh/code/Proj/"$$0) }' > /home/mirafra/pritesh/code/Proj/kernel_log.mod

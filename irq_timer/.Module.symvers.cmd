@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/irq_timer/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/pritesh/code/irq_timer/Module.symvers -T /home/mirafra/pritesh/code/irq_timer/modules.order -i Module.symvers -e 

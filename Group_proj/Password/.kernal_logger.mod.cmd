@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/Group_proj/Password/kernal_logger.mod := printf '%s\n'   kernal_logger.o | awk '!x[$$0]++ { print("/home/mirafra/pritesh/code/Group_proj/Password/"$$0) }' > /home/mirafra/pritesh/code/Group_proj/Password/kernal_logger.mod

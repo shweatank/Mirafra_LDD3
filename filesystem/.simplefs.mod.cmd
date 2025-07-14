@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/filesystem/simplefs.mod := printf '%s\n'   simplefs.o | awk '!x[$$0]++ { print("/home/mirafra/pritesh/code/filesystem/"$$0) }' > /home/mirafra/pritesh/code/filesystem/simplefs.mod

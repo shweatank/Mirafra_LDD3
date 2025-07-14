@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/Group_proj/event_logger.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/Group_proj/event_logger.ko /home/mirafra/pritesh/code/Group_proj/event_logger.o /home/mirafra/pritesh/code/Group_proj/event_logger.mod.o

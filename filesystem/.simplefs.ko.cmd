@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/filesystem/simplefs.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/filesystem/simplefs.ko /home/mirafra/pritesh/code/filesystem/simplefs.o /home/mirafra/pritesh/code/filesystem/simplefs.mod.o

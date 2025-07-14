@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/pritesh/code/irq_timer/irq_timer_demo.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/pritesh/code/irq_timer/irq_timer_demo.ko /home/mirafra/pritesh/code/irq_timer/irq_timer_demo.o /home/mirafra/pritesh/code/irq_timer/irq_timer_demo.mod.o
