@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/14_07_25/mymod.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd/14_07_25/mymod.ko /home/mirafra/ldd/14_07_25/mymod.o /home/mirafra/ldd/14_07_25/mymod.mod.o;  true
