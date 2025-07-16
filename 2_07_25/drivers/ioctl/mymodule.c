@@ -53,7 +53,7 @@ static struct file_operations fops={
 	.release=my_release,
 	.unlocked_ioctl=my_ioctl
 };
-
+:x
 static int __init ioctl_init(void)
 {
 	int ret=register_chrdev(MAJOR_NUM,DEVICE_NAME,&fops);
