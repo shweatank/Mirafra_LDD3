@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/4_07_25/practice_drivers/interrupt/mymod_interrupt.mod := { echo  /home/mirafra/ldd/4_07_25/practice_drivers/interrupt/mymod_interrupt.o;  echo; } > /home/mirafra/ldd/4_07_25/practice_drivers/interrupt/mymod_interrupt.mod

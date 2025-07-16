@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/16_07_25/practice_drivers/sysfs_demo.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd/16_07_25/practice_drivers/sysfs_demo.ko /home/mirafra/ldd/16_07_25/practice_drivers/sysfs_demo.o /home/mirafra/ldd/16_07_25/practice_drivers/sysfs_demo.mod.o;  true

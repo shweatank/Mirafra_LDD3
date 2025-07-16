@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/4_07_25/practice_drivers/interrupt/modules.order := {   echo /home/mirafra/ldd/4_07_25/practice_drivers/interrupt/mymod_interrupt.ko; :; } | awk '!x[$$0]++' - > /home/mirafra/ldd/4_07_25/practice_drivers/interrupt/modules.order

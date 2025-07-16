@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/4_07_25/practice_drivers/interrupt/Module.symvers := sed 's/\.ko$$/\.o/' /home/mirafra/ldd/4_07_25/practice_drivers/interrupt/modules.order | scripts/mod/modpost -m -a  -o /home/mirafra/ldd/4_07_25/practice_drivers/interrupt/Module.symvers -e -i Module.symvers   -T -
