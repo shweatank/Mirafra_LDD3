@@ -1,1 +1,0 @@
-savedcmd_/home/lenovo/home/ldd/interruptt/wait_queue.mod := printf '%s\n'   wait_queue.o | awk '!x[$$0]++ { print("/home/lenovo/home/ldd/interruptt/"$$0) }' > /home/lenovo/home/ldd/interruptt/wait_queue.mod

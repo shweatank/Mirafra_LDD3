@@ -1,0 +1,1 @@
+savedcmd_/home/lenovo/home/ldd/pollsel/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/lenovo/home/ldd/pollsel/Module.symvers -T /home/lenovo/home/ldd/pollsel/modules.order -i Module.symvers -e 

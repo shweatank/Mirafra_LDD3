@@ -1,1 +1,0 @@
-savedcmd_/home/lenovo/home/ldd/keyboard/keyboard_cal.mod := printf '%s\n'   keyboard_cal.o | awk '!x[$$0]++ { print("/home/lenovo/home/ldd/keyboard/"$$0) }' > /home/lenovo/home/ldd/keyboard/keyboard_cal.mod

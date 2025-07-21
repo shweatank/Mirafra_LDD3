@@ -11,9 +11,13 @@
 #define DEVICE_NAME "mywait"
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("TechDhaba");
+MODULE_AUTHOR("Pavan");
 MODULE_DESCRIPTION("Waitqueue Example Module");
-
+static struct mydata{
+	int a,b;
+	char ch;
+}data;
+int result;
 static dev_t dev;
 static struct cdev my_cdev;
 static struct class *my_class;
@@ -26,8 +30,8 @@ int size=0;
 static ssize_t my_read(struct file *filp, char __user *buf,
                        size_t len, loff_t *off)
 {
-	if(size==5)
-		return 0;
+	//if(size==4)
+		//return 0;
     printk(KERN_INFO "mywait: Reader going to sleep...\n");
 
     // Wait until flag is set
@@ -37,11 +41,31 @@ static ssize_t my_read(struct file *filp, char __user *buf,
 
     // Clear flag and return to user
     flag = 0;
+    switch(data.ch)
+    {
+	    case '+':
+		    result=data.a+data.b;
+		    break;
+	case '-':
+                    result=data.a-data.b;
+                    break;
+	case '*':
+                    result=data.a*data.b;
+                    break;
+	case '/':
+                    result=data.a/data.b;
+                    break;
+	case '%':
+                    result=data.a%data.b;
+                    break;
+	default:
+		    break;
+    }
 
-    if (copy_to_user(buf, "done\n", 5))
+    if (copy_to_user(buf,&result,4))
         return -EFAULT;
-    size=5;
-    return 5;
+    //size=4;
+    return 4;
 }
 
 // --- Write sets flag and wakes up reader ---
@@ -50,6 +74,7 @@ static ssize_t my_write(struct file *filp, const char __user *buf,
 {
     printk(KERN_INFO "mywait: Writer waking up reader\n");
     flag = 1;
+    copy_from_user(&data,buf,sizeof(data));
     wake_up_interruptible(&wq);
     return len;
 }

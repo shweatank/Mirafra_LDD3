@@ -1,4 +1,4 @@
-obj-m += wait_queue_calc.o
+obj-m += poll_driver.o
 
 KDIR :=/lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)

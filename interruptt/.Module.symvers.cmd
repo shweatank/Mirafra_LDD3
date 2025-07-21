@@ -1,1 +1,0 @@
-savedcmd_/home/lenovo/home/ldd/interruptt/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/lenovo/home/ldd/interruptt/Module.symvers -T /home/lenovo/home/ldd/interruptt/modules.order -i Module.symvers -e 
