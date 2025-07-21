@@ -1,0 +1,1 @@
+cmd_/home/mirafra/ldd/18_07_25/practice_drivers/hrtimer_demo.ko := ld -r  -m elf_x86_64 -z noexecstack   --build-id=sha1  -T scripts/module.lds -o /home/mirafra/ldd/18_07_25/practice_drivers/hrtimer_demo.ko /home/mirafra/ldd/18_07_25/practice_drivers/hrtimer_demo.o /home/mirafra/ldd/18_07_25/practice_drivers/hrtimer_demo.mod.o;  true
