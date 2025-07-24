@@ -1,0 +1,30 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target = <&gpio>;
+        __overlay__ {
+            led_gpio21: led_gpio21 {
+                brcm,pins = <21>;
+                brcm,function = <1>;      // output
+                brcm,pull = <0>;          // no pull
+            };
+        };
+    };
+
+    fragment@1 {
+        target-path = "/";
+        __overlay__ {
+            led_blink {
+                compatible = "rpi,gpio-led-blink";
+                pinctrl-names = "default";
+                pinctrl-0 = <&led_gpio21>;
+                gpios = <&gpio 21 0>;
+            };
+        };
+    };
+};
+
