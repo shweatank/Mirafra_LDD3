@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <linux/i2c-dev.h>
+#include <sys/ioctl.h>
+
+#define I2C_DEVICE "/dev/i2c-1"
+#define SSD1306_ADDR 0x3C
+#define WIDTH 128
+#define HEIGHT 32
+
+int i2c_fd;
+
+const uint8_t pineapple_bitmap[512] = {
+    // 128x32 (128 * 32 / 8 = 512 bytes)
+    // Example pineapple image (converted using image2cpp)
+    // You can replace this with a different image's hex array
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00,
+    0x10,0x38,0x7C,0x7C,0x38,0x10,0x00,0x00,0x00,0x10,0x38,0x7C,0x7C,0x38,0x10,0x00,
+    0x00,0x10,0x38,0x7C,0x7C,0x38,0x10,0x00,0x00,0x00,0x10,0x38,0x7C,0x7C,0x38,0x10,
+    0x00,0x10,0x38,0x7C,0xFE,0x7C,0x38,0x10,0x00,0x10,0x38,0x7C,0xFE,0x7C,0x38,0x10,
+    0x00,0x00,0x10,0x38,0x7C,0x38,0x10,0x00,0x00,0x00,0x10,0x38,0x7C,0x38,0x10,0x00,
+    // The rest of 512 bytes can be filled with 0x00 or your full pineapple image
+    // You can generate a full 128x32 pineapple bitmap from javl.github.io/image2cpp
+};
+
+void ssd1306_command(uint8_t cmd) {
+    uint8_t buffer[2] = {0x00, cmd};
+    write(i2c_fd, buffer, 2);
+}
+
+void ssd1306_init() {
+    ssd1306_command(0xAE);
+    ssd1306_command(0xD5); ssd1306_command(0x80);
+    ssd1306_command(0xA8); ssd1306_command(HEIGHT - 1);
+    ssd1306_command(0xD3); ssd1306_command(0x00);
+    ssd1306_command(0x40);
+    ssd1306_command(0x8D); ssd1306_command(0x14);
+    ssd1306_command(0x20); ssd1306_command(0x00);
+    ssd1306_command(0xA1);
+    ssd1306_command(0xC8);
+    ssd1306_command(0xDA); ssd1306_command(0x02);
+    ssd1306_command(0x81); ssd1306_command(0xCF);
+    ssd1306_command(0xD9); ssd1306_command(0xF1);
+    ssd1306_command(0xDB); ssd1306_command(0x40);
+    ssd1306_command(0xA4);
+    ssd1306_command(0xA6);
+    ssd1306_command(0xAF);
+}
+
+void ssd1306_clear() {
+    for (uint8_t page = 0; page < 4; page++) {
+        ssd1306_command(0xB0 + page);
+        ssd1306_command(0x00);
+        ssd1306_command(0x10);
+        for (uint8_t col = 0; col < WIDTH; col++) {
+            uint8_t buffer[2] = {0x40, 0x00};
+            write(i2c_fd, buffer, 2);
+        }
+    }
+}
+
+void ssd1306_draw_bitmap(const uint8_t *bitmap) {
+    for (uint8_t page = 0; page < 4; page++) {
+        ssd1306_command(0xB0 + page);  // Page start
+        ssd1306_command(0x00);         // Column low
+        ssd1306_command(0x10);         // Column high
+        for (uint8_t col = 0; col < WIDTH; col++) {
+            uint8_t buffer[2] = {0x40, bitmap[page * WIDTH + col]};
+            write(i2c_fd, buffer, 2);
+        }
+    }
+}
+
+int main() {
+    i2c_fd = open(I2C_DEVICE, O_RDWR);
+    if (i2c_fd < 0) {
+        perror("Failed to open I2C device");
+        return 1;
+    }
+
+    if (ioctl(i2c_fd, I2C_SLAVE, SSD1306_ADDR) < 0) {
+        perror("Failed to set I2C address");
+        close(i2c_fd);
+        return 1;
+    }
+
+    ssd1306_init();
+    ssd1306_clear();
+    ssd1306_draw_bitmap(pineapple_bitmap);
+
+    close(i2c_fd);
+    return 0;
+}
+
