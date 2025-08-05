@@ -1,4 +1,4 @@
-obj-m += ioctl_demo.o
+obj-m += mem_barrior.o
 
 KDIR :=/lib/modules/$(shell uname -r)/build
 PWD := $(shell pwd)

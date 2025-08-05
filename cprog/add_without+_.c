@@ -2,9 +2,15 @@
 
 int main()
 {
-	int a,b,c=0;
+	int a,b,carry;
 	scanf("%d %d",&a,&b);
-	c|=(a|b)|((a&b)<<1);
-	printf("%d\n",c);
+	while(b!=0)
+	{
+		carry=a&b;
+		a=a^b;
+		b=carry<<1;
+	}
+	printf("%d\n",a);
+	return 0;
 }
 

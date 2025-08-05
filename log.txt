@@ -1,0 +1,6 @@
+[Jul 28 2025 11:35:49] debugg2.c:25 - This is a simple log message.
+[Jul 28 2025 11:35:49] debugg2.c:26 - The value of 'value' is: 10
+[Jul 28 2025 11:37:29] debugg2.c:25 - This is a simple log message.
+[Jul 28 2025 11:37:29] debugg2.c:26 - The value of 'value' is: 10
+[Jul 28 2025 12:07:35] main:debugg2.c:22 - This is a simple log message.
+[Jul 28 2025 12:07:35] main:debugg2.c:23 - The value of 'value' is: 10

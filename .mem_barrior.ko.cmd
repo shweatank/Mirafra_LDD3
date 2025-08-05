@@ -1,0 +1,1 @@
+savedcmd_/home/lenovo/home/ldd/mem_barrior.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/lenovo/home/ldd/mem_barrior.ko /home/lenovo/home/ldd/mem_barrior.o /home/lenovo/home/ldd/mem_barrior.mod.o
