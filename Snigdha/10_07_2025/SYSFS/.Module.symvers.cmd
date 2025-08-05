@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/10_07_2025/SYSFS/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/Snigdha/Snigdha/10_07_2025/SYSFS/Module.symvers -T /home/mirafra/Desktop/Snigdha/Snigdha/10_07_2025/SYSFS/modules.order -i Module.symvers -e 

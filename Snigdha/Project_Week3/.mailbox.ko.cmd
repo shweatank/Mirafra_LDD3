@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/Project_Week3/mailbox.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week3/mailbox.ko /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week3/mailbox.o /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week3/mailbox.mod.o

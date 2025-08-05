@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/10_07_2025/SYSFS/sysfs_platform_driver.mod := printf '%s\n'   sysfs_platform_driver.o | awk '!x[$$0]++ { print("/home/mirafra/Desktop/Snigdha/Snigdha/10_07_2025/SYSFS/"$$0) }' > /home/mirafra/Desktop/Snigdha/Snigdha/10_07_2025/SYSFS/sysfs_platform_driver.mod
