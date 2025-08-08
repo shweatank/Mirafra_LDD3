@@ -1,0 +1,6 @@
+
+[MSG] Main started | File: log_cat.c | Func: main | Line: 32 | Date: Jul 28 2025 | Time: 12:19:47
+[MSG] Main finished | File: log_cat.c | Func: main | Line: 34 | Date: Jul 28 2025 | Time: 12:19:47
+[MSG] Main started | File: log_cat.c | Func: main | Line: 32 | Date: Jul 28 2025 | Time: 12:23:19
+[MSG] Sending hello.. | File: log_cat.c | Func: test_log | Line: 28 | Date: Jul 28 2025 | Time: 12:23:19
+[MSG] Main finished | File: log_cat.c | Func: main | Line: 34 | Date: Jul 28 2025 | Time: 12:23:19
