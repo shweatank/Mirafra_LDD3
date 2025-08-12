@@ -12,7 +12,7 @@
 
 #define WIDTH 640
 #define HEIGHT 480
-#define FRAME_COUNT 90  // ~3 seconds at 30 FPS
+#define FRAME_COUNT 150  // ~3 seconds at 30 FPS
 
 int main() {
     int fd = open("/dev/video0", O_RDWR);
