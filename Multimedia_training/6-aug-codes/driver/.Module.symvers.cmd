@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Multimedia_training/5-aug-codes/driver/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Multimedia_training/5-aug-codes/driver/Module.symvers -T /home/mirafra/Multimedia_training/5-aug-codes/driver/modules.order -i Module.symvers -e 

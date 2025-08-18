@@ -1,0 +1,1 @@
+cmd_/home/mirafra/MirafraLDD3_training/uart_test/task4/kernelDriver.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/MirafraLDD3_training/uart_test/task4/kernelDriver.ko /home/mirafra/MirafraLDD3_training/uart_test/task4/kernelDriver.o /home/mirafra/MirafraLDD3_training/uart_test/task4/kernelDriver.mod.o;  true

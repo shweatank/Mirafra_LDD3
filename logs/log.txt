@@ -1,0 +1,8 @@
+User: sunny
+Message: hello
+File: logsCustom.c
+Function: main
+Line: 31
+Date: Jul 28 2025
+Time: 12:05:43
+

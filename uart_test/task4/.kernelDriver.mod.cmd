@@ -1,0 +1,1 @@
+cmd_/home/mirafra/MirafraLDD3_training/uart_test/task4/kernelDriver.mod := printf '%s\n'   kernelDriver.o | awk '!x[$$0]++ { print("/home/mirafra/MirafraLDD3_training/uart_test/task4/"$$0) }' > /home/mirafra/MirafraLDD3_training/uart_test/task4/kernelDriver.mod

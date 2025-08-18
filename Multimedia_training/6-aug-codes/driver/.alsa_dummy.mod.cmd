@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Multimedia_training/5-aug-codes/driver/alsa_dummy.mod := printf '%s\n'   alsa_dummy.o | awk '!x[$$0]++ { print("/home/mirafra/Multimedia_training/5-aug-codes/driver/"$$0) }' > /home/mirafra/Multimedia_training/5-aug-codes/driver/alsa_dummy.mod

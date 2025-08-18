@@ -1,0 +1,1 @@
+cmd_/home/mirafra/MirafraLDD3_training/deviceDriver/poll_select/Module.symvers :=  scripts/mod/modpost -m -a     -o /home/mirafra/MirafraLDD3_training/deviceDriver/poll_select/Module.symvers -T /home/mirafra/MirafraLDD3_training/deviceDriver/poll_select/modules.order -i Module.symvers -e 

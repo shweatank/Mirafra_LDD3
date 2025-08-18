@@ -1,0 +1,1 @@
+cmd_/home/mirafra/MirafraLDD3_training/uart_test/task4/Module.symvers :=  scripts/mod/modpost -m -a     -o /home/mirafra/MirafraLDD3_training/uart_test/task4/Module.symvers -T /home/mirafra/MirafraLDD3_training/uart_test/task4/modules.order -i Module.symvers -e 
