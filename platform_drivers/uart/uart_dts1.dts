@@ -1,0 +1,25 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "custom,myboard";
+    model = "Custom UART Test Board";
+
+    #address-cells = <1>;
+    #size-cells = <1>;
+
+    soc {
+        compatible = "simple-bus";
+        #address-cells = <1>;
+        #size-cells = <1>;
+        ranges;
+
+        uart0: my_uart@FE201000 {
+            compatible = "custom,my-uart";
+            reg = <0x0xFE201000 0x200>;   /* base address, size */
+           // interrupts = <5>;            /* example IRQ number */
+            status = "okay";
+        };
+    };
+};
+

@@ -1,0 +1,27 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711";
+
+    fragment@0 {
+        target = <&uart0>;
+        __overlay__ {
+            status = "disabled";
+        };
+    };
+
+    fragment@1 {
+        target-path = "/soc";
+        __overlay__ {
+            uart_demo: uart_demo@fe201000 {
+                compatible = "custom,uart_demo";
+                reg = <0x0 0xfe201000 0x100>;
+                interrupt-parent = <&intc>;
+                interrupts = <0 57 4>; /* IRQ for PL011 */
+                status = "okay";
+            };
+        };
+    };
+};
+
