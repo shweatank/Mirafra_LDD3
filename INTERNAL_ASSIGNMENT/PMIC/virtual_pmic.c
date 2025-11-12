@@ -1,0 +1,147 @@
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/kobject.h>
+#include <linux/sysfs.h>
+
+/* Simulated PMIC state */
+static int virtual_cpu_uv = 1000000;        // CPU rail (microvolts)
+static int virtual_io_uv = 3300000;         // IO rail (microvolts)
+static int virtual_peripherals_enable = 1;  // Peripherals ON/OFF
+
+static struct kobject *vpmic_kobj;
+
+/* Helper: enforce sequencing logic */
+static void enforce_power_sequence(void)
+{
+    if (virtual_cpu_uv == 0) {
+        virtual_io_uv = 0;
+        virtual_peripherals_enable = 0;
+        pr_info("Virtual PMIC: CPU rail off -> IO and peripherals disabled automatically\n");
+    }
+}
+
+/* CPU rail */
+static ssize_t cpu_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
+{
+    return sprintf(buf, "%d\n", virtual_cpu_uv);
+}
+
+static ssize_t cpu_store(struct kobject *kobj, struct kobj_attribute *attr,
+                         const char *buf, size_t count)
+{
+    sscanf(buf, "%d", &virtual_cpu_uv);
+    pr_info("Virtual PMIC: CPU rail set to %duV\n", virtual_cpu_uv);
+    enforce_power_sequence();
+    return count;
+}
+
+static struct kobj_attribute cpu_attr =
+    __ATTR(cpu_microvolts, 0664, cpu_show, cpu_store);
+
+/* IO rail */
+static ssize_t io_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
+{
+    return sprintf(buf, "%d\n", virtual_io_uv);
+}
+
+static ssize_t io_store(struct kobject *kobj, struct kobj_attribute *attr,
+                        const char *buf, size_t count)
+{
+    int temp;
+    sscanf(buf, "%d", &temp);
+
+    if (virtual_cpu_uv == 0) {
+        pr_warn("Virtual PMIC: Cannot enable IO rail — CPU rail is off!\n");
+        return count;
+    }
+
+    virtual_io_uv = temp;
+    pr_info("Virtual PMIC: IO rail set to %duV\n", virtual_io_uv);
+    return count;
+}
+
+static struct kobj_attribute io_attr =
+    __ATTR(io_microvolts, 0664, io_show, io_store);
+
+/* Peripherals rail */
+static ssize_t periph_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
+{
+    return sprintf(buf, "%d\n", virtual_peripherals_enable);
+}
+
+static ssize_t periph_store(struct kobject *kobj, struct kobj_attribute *attr,
+                            const char *buf, size_t count)
+{
+    int temp;
+    sscanf(buf, "%d", &temp);
+
+    if (virtual_cpu_uv == 0) {
+        pr_warn("Virtual PMIC: Cannot enable peripherals — CPU rail is off!\n");
+        return count;
+    }
+
+    virtual_peripherals_enable = temp ? 1 : 0;
+    pr_info("Virtual PMIC: Peripherals %s\n",
+            virtual_peripherals_enable ? "enabled" : "disabled");
+    return count;
+}
+
+static struct kobj_attribute periph_attr =
+    __ATTR(peripherals_enable, 0664, periph_show, periph_store);
+
+/* Status */
+static ssize_t status_show(struct kobject *kobj, struct kobj_attribute *attr, char *buf)
+{
+    return sprintf(buf,
+                   "PMIC STATUS:\n"
+                   " CPU Rail: %duV\n"
+                   " IO Rail: %duV\n"
+                   " Peripherals: %s\n",
+                   virtual_cpu_uv,
+                   virtual_io_uv,
+                   virtual_peripherals_enable ? "ENABLED" : "DISABLED");
+}
+
+static struct kobj_attribute status_attr =
+    __ATTR(status, 0444, status_show, NULL);
+
+/* Init and exit */
+static int __init vpmic_init(void)
+{
+    int ret;
+
+    vpmic_kobj = kobject_create_and_add("virtual_pmic", kernel_kobj);
+    if (!vpmic_kobj)
+        return -ENOMEM;
+
+    ret = sysfs_create_file(vpmic_kobj, &cpu_attr.attr);
+    if (ret) goto fail;
+    ret = sysfs_create_file(vpmic_kobj, &io_attr.attr);
+    if (ret) goto fail;
+    ret = sysfs_create_file(vpmic_kobj, &periph_attr.attr);
+    if (ret) goto fail;
+    ret = sysfs_create_file(vpmic_kobj, &status_attr.attr);
+    if (ret) goto fail;
+
+    pr_info("Virtual PMIC (v3): Power sequencing enabled (CPU -> IO -> Peripherals)\n");
+    return 0;
+
+fail:
+    kobject_put(vpmic_kobj);
+    return ret;
+}
+
+static void __exit vpmic_exit(void)
+{
+    kobject_put(vpmic_kobj);
+    pr_info("Virtual PMIC removed\n");
+}
+
+module_init(vpmic_init);
+module_exit(vpmic_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("kusuma");
+MODULE_DESCRIPTION("Virtual PMIC v3 with Power Sequencing");
+
