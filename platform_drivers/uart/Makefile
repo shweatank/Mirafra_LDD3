@@ -1,10 +1,8 @@
-obj-m += uart_driver.o
-
-KDIR := /home/mirafra/LDD_training/platform_drivers/gpio/linux
-PWD  := $(shell pwd)
+obj-m += my_uart.o
 
 all:
-	$(MAKE) -C $(KDIR) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- M=$(PWD) modules
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
 
 clean:
-	$(MAKE) -C $(KDIR) ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- M=$(PWD) clean
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
