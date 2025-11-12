@@ -1,0 +1,75 @@
+#include <linux/module.h>
+#include <linux/platform_device.h>
+#include <linux/of.h>
+#include <linux/of_device.h>
+#include <linux/io.h>
+#include <linux/interrupt.h>
+
+
+// Driver's private information needed to operate h/w
+struct my_uart_dev 
+{
+    void __iomem *base;
+    int irq;
+};
+
+
+// Probing function. Kernel calls if it finds device matching driver 
+static int my_uart_probe(struct platform_device *pdev)
+{
+    struct resource *res;
+    struct my_uart_dev *uart;
+
+    pr_info("UART driver probe called\n");
+
+    uart = devm_kzalloc(&pdev->dev, sizeof(*uart), GFP_KERNEL);    // Allocates memory for my_uart_dev. devm is used to automatically free the memory when device is removed
+    if (!uart)
+        return -ENOMEM;
+
+    // Get memory resource
+    res = platform_get_resource(pdev, IORESOURCE_MEM, 0);// Retrieves memory mapped I/O 
+    uart->base = devm_ioremap_resource(&pdev->dev, res);// Maps that MMIO address to virtual address in kernel
+    if (IS_ERR(uart->base))
+        return PTR_ERR(uart->base);
+
+    // Retrieve Interrupt number 
+    uart->irq = platform_get_irq(pdev, 0);
+    if (uart->irq < 0)
+        return uart->irq;
+
+    // Save driver's private data to platform device
+    platform_set_drvdata(pdev, uart);
+
+    pr_info("UART probe success! Mapped at %p\n", uart->base);
+    return 0;
+}
+
+static int my_uart_remove(struct platform_device *pdev)
+{
+    pr_info("UART driver removed\n");
+    return 0;
+}
+
+// Static table for Matching device name using Device Tree
+static const struct of_device_id my_uart_of_match[] = {
+    { .compatible = "myvendor,my-uart", },
+    { /* sentinel */ }
+};
+MODULE_DEVICE_TABLE(of, my_uart_of_match);
+
+// Main structure which links all functions and of_match_table with respective functions 
+static struct platform_driver my_uart_driver = {
+    .probe  = my_uart_probe,
+    .remove = my_uart_remove,
+    .driver = {
+        .name           = "my_uart_driver",
+        .of_match_table = my_uart_of_match,
+    },
+};
+
+module_platform_driver(my_uart_driver);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Your Name");
+MODULE_DESCRIPTION("Example UART Platform Driver");
+
