@@ -4,9 +4,6 @@
 #include<linux/gpio.h>
 #include<linux/of_gpio.h>
 #include<linux/delay.h>
-MODULE_AUTHOR("swarna");
-MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("gpio_led_demo");
 static struct gpio_desc *gpio_num; 
 static int my_probe(struct platform_device *pdev)
 {
@@ -49,3 +46,6 @@ static struct platform_driver gpio_led_driver={
 	},
 };
 module_platform_driver(gpio_led_driver);
+MODULE_AUTHOR("Pavan");
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("GPIO");
