@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+/{
+ compatible="bcm,bcm2711";
+ fragment@0{
+ target-path="/";
+__overlay__{
+button_demo:dutton{
+compatible="rpi,button_gpio";
+status="okay";
+label="butto";
+gpios=<&gpio 18 0>;
+};
+};
+};
+};
