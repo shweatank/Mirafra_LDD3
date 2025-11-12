@@ -78,6 +78,6 @@ static struct i2c_driver ssd1306_driver = {
 module_i2c_driver(ssd1306_driver);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Swarna");
-MODULE_DESCRIPTION("SSD1306 OLED I2C Platform Driver");
+MODULE_AUTHOR("Pavan");
+MODULE_DESCRIPTION("I2C Platform Driver");
 
