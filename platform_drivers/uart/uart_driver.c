@@ -77,5 +77,5 @@ static struct platform_driver uart_platform_driver = {
 module_platform_driver(uart_platform_driver);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Swarna");
-MODULE_DESCRIPTION("Minimal UART platform driver for send/read");
+MODULE_AUTHOR("Pavan");
+MODULE_DESCRIPTION("UART platform driver");
