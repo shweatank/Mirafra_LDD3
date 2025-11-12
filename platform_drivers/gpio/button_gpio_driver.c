@@ -4,8 +4,6 @@
 #include<linux/of_gpio.h>
 #include<linux/platform_device.h>
 #include<linux/interrupt.h>
-MODULE_LICENSE("GPL");
-MODULE_AUTHOR("SWARNA");
 static struct gpio_desc *button_num;
 static int irq_num;
 static irqreturn_t my_isr(int irq,void *devm)
@@ -58,4 +56,6 @@ static struct platform_driver button_gpio_declare={
 	},
 };
 module_platform_driver(button_gpio_declare);
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Pavan");
 
