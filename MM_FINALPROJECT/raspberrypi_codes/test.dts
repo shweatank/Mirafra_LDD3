@@ -1,0 +1,34 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    /*
+     * Parameters you can override from config.txt:
+     * cs=<0|1> : SPI chip select
+     * speed=<Hz> : SPI clock (default 32000000)
+     * dc_pin=<gpio> : Data/Command pin (required)
+     * reset_pin=<gpio> : Reset pin (optional but recommended)
+     * led_pin=<gpio> : Backlight enable pin (optional)
+     * rotation=<0|90|180|270> : Panel rotation (optional)
+     */
+
+    fragment@0 {
+        target = <&spi0>;
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+
+            ili9225@0 {
+                compatible = "ilitek,ili9225";
+                reg = <0>;                  // SPI chip-select 0
+                spi-max-frequency = <32000000>;
+                dc-gpios = <&gpio 24 0>;    // Data/Command pin
+                reset-gpios = <&gpio 25 0>; // Reset pin
+                status = "okay";
+            };
+        };
+    };
+};
+
