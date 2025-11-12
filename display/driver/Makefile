@@ -1,0 +1,13 @@
+# Makefile for ili9225 kernel module
+
+obj-m := ili9225_spi.o
+
+KDIR := /lib/modules/$(shell uname -r)/build
+PWD  := $(shell pwd)
+
+all:
+	$(MAKE) -C $(KDIR) M=$(PWD) modules
+
+clean:
+	$(MAKE) -C $(KDIR) M=$(PWD) clean
+
