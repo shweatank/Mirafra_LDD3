@@ -1,0 +1,107 @@
+---------Memory Leak----------
+
+A memory leak in kernel happens when kernel allocates memory using kmalloc, vmalloc, kzalloc etc but never frees it or forgots to free it. 
+These leaks consume kernel memory which is not swappable leading to Out Of Memory, system instability or kernel panic situations .
+
+CAUSES:
+   1)Unfreed allocations
+   2)Lost pointers
+   3)Improper exception handling 
+   
+SYSTEM RESPONSE:
+   *As a program leaks memory,eventually more memory is consumed which in turn scares the physical memory.So, the system starts moving data from RAM into swap space/virtual memory and causes slowing down the entire system.
+   *Thrashing : The process of moving data from system's RAM into designated area in hard disk called swap space or virtual memory.
+   *The leaking program expanding memory footprint push other applications out of memory and into virtual memory.
+   *It also triggers Out-Of-Memory error if any other program try to access memory.
+
+TOOLS:
+
+**KMEMLEAK: It is a in-built tool which is used to find memory leaks in kernel space code.It operates like tracing garbage collector.
+**How it works?? Tracks all allocated kernel memory blocks and periodically scans system to see if they are still reachable or have pointers pointing to them or not. If memory block have no pointing referencing it,it is considered as potential leak.
+**How to use ??
+  1)Enable Kmemleak during boot. CONFIG_DEBUG_KMEMLEAK=y
+  2)Mount debugfs file system. sudo mount /sys/kernel/debug.
+  3)View leaks. sudo cat /sys/kernel/debug/kmemleak.
+  
+**VALGRIND:It is dynamic binary instrumentation framework. When you run a program under valgrind, it does not run directly on real CPU.
+**How it works?? But takes your compiled binary, translates into intermediate representation(IR) and that IR is then executed by valgrind's virtual CPU.
+**How to use ??
+  1) Compile the c program using -g(debugging info) option.
+          gcc -g ex.c -o ex
+  2)valgrind --leak-check=full ./ex
+  3)Interpret the output.
+     *definitely lost : Allocated memory on heap and never freed.
+     *indirectly lost : Memory pointed by definitely lost blocks.
+     *possibly lost : Heap allocated memory that was not freed, but valgrind can't be sure if there any pointers toit
+     *still reachable  
+
+**AddressSanitizer(ASan): It is a compiler based/run time  memory error detector.
+**How it works?? Compiler inserts extra instructions into your program automatically and these instructions validate memory accesses, use a special shadow memory region to track allocations.
+**How to use??
+  1)Compile using ASan support. 
+       gcc -fsanitize=address -g ex.c -o ex
+  2) Run the program and analyze the output.
+
+**Dr.Memory: It is a memory debugging tool works by instrumenting a program at runtime as Valgrind.
+**How it works?? Same as Valgrind.
+**How to use ??
+  1) Install package . sudo apt install drmemory
+  2) drmemory -- ./a.out
+  3)Analyse output . 
+
+**Kernel Address Sanitizer(KASAN): It is a kernel level memory error detector. 
+**How it works?? Uses shadow memory, a dedicated portion of memory that mirrors entire kernel memory space. For every 8 byte of kernel memory, there is a byte in shadow memory which records accessibility status of 8 byte. If shadow byte indicates an invalid access, KASAN prints bug report. 
+**How to use??
+  1)Configure KASAN feature. CONFIG_KASAN =y
+  2)Boot the kernel and view logs using dmesg . 
+
+**slabinfo : It is system that helps you monitor health and usage of the caches which store small,frequently used DS like inodes,n/w buffers etc . 
+**How it works?? Reads from virtual file named /proc/slabinfo which contains real time info about each slab cache.
+**How to use??
+  1) cat /proc/slabinfo ----> snapshot of current slab usage
+  2) slabtop ----> find largest cache
+  3)slabinfo -v -----> Validates all objects in caches.
+
+
+
+---------PCIe-------------
+PCI(Peripheral Component Interconnect) : 
+     It is a parallel communication bus standard for connecting peripheral devices like soundcards, network cards and modems to computer's mother board via PCI slot. 
+     All devices share same PCI bus and only device can use the bus at one time.Supports plug and play, allowing OS to automatically configure devices. 
+PCIe(PCI Express): 
+  1)It is a serial evolution of PCI which have lanes for transmission.
+  2)Supports 1,2,4,8,16,32 lanes(x1,x2,x4,x8,x16,x32).
+  3)Transmission speed is dependent on lane. For every lane, speed is almost doubled the previous lane.
+         PCIe1.0 : 250Mb/s
+         PCIe2.0 : 500Mb/s
+  4)Hot plug support : Insertion and deletion of devices during runtime.
+  5)Bi-directional.
+  6)More lanes -----> More bandwidth
+Primary components of PCIe:
+  1)Root Complex : Starting point of PCIe hierarchy.Inside CPU or chipset.Generates transaction requests based on CPU. Manages commu. between CPU and PCIe devices.
+  2)End point : Device at the end of PCIe tree. Plugged into motherboard through slot.
+  3)Bridge : Connect PCIe devices to a system.
+  4)Link : Physical connection between two PCIe devices.
+  5)Switch : Component that has single upstream link and fans out to multiple downstream links.
+  6)Lane: Physical connection which has 2 pairs of wires.
+PCIe Layers:
+  1)Transport layer: Creates and interpretes PCIe packets.
+  2)Data Link layer: Error checking, ACK/NACK
+  3)Physical layer: Sends/receives raw bits over wires.
+Tools to detect PCI devices:
+  *lspci: Lists all PCI/PCIe devices with their bus ID, device class, vendor and device name.
+          lspci -v -----> Detailed output
+          lspci -t -----> Tree format 
+  *lshw: Lists all hardware components including n/w interfaces.
+          sudo lshw -class network -businfo
+  *sysfs: Hardware info through sysfs virtual file system. 
+        ls /sys/bus/pci/devices
+  *PCItree: Reads all PCI configuration space of each device on the bus in a tree view.
+  *PCI Diag: It is a utility tool used to test and debug PCI devices.It allows for direct,low level interaction with PCI devices without needing full fledged driver.
+  *dmidecode:Info about PCI slots.
+PCIe Communication Mechanisms:
+  1)MMIO(Memory Mapped I/O):At boot, OS enumerates each PCIe device and assign each Base Address Register(BAR) to physical memory address range. CPU then use readl/writel to interact with that device through device's registers.
+  2)DMA(Direct Memory Access): Without need of CPU,the device's DMA engine directly handles data transfer from/to system's main memory bypassing CPU.
+  3)Interrupts: Without constant polling for system's attention,driver has registered interrupt handler that calls process when a task is complete or event occurs.
+
+  

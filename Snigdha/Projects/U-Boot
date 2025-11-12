@@ -1,0 +1,40 @@
+U-Boot : It is open source second stage bootloader that initializes hardware and loads operating system kernel into main memory.
+
+Features: 
+   *Performs low level hardware setup before OS starts.
+   *Loads OS kernel, device tree and initramfs into random access memory and passes control to it.
+   *Supports multiple boot sources like SD card, eMMC, USB, SPI Flash, TFTP etc.
+   *Provides command line interface through serial port, allowing users to interact with boot process, set environment variables and perform diagnostics.
+
+**BootROM can't handle huge OS images directly. So,U-Boot is critical to initialize peripherals and load large images into RAM.
+
+Commands in U-boot environment:
+    1)printenv : Display current U-Boot environment variables. Shows list of key-value pairs that are currently loaded in RAM. 
+    2)setenv <var> <value> : Allows to create a new environment variable or change the value of an existing one. Not permanent until user saves it.
+    3)saveenv : Saves current set of environment variables from system's RAM to persistent storage such as flash memory or SD card.
+    4)bootm <addr> : Used to boot a U-Boot specific kernel image called uImage from given memory address. When bootm is executed, it reads the header and prepares to jump to kernel's entry point, passing control to OS.
+    4)bootz <addr> : Used to boot a compressed kernel image called zImage. When bootz is executed, it automatically decompresses kernel in memory and starts execution.
+    5)tftpboot <addr> <filename> (trivial file transfer): Loads a file from tftp server into RAM at specified memory address without need of secondary memory like flash/SD card.
+    6)ext4load mmc 0:1 <addr> <file> : Used to load a file from specific partition of SD card or eMMC storage. 
+    7)mmc dev 0 : Used to select specific eMMC or SD card device to work with.
+
+Commands in Linux environment :
+    1)fw_printenv : Similar to printenv of U-Boot
+    2)fw_setenv : Similar to setenv+saveenv of U-Boot
+Difference between zImage and uImage :
+    *zImage : It is a compressed, self-extracting linux kernel image. U-Boot uses bootz command to load zImage. This command needs to be told the memory address where zImage is loaded and where to fnd DTB.
+    *uImage : It is also a zImage with 64 byte U-Boot header prepended to it.This header contains metadata like kernel's load address,entry point addr, image size, OS type. U-Boot uses bootm command to load uImage.Created from zImage using mkimage tool. 
+
+U-Boot Environment variables : 
+    *They are set of key-value pairs stored in non-volatile memory like sector on SD card. They are used to change boot settings without re-compiling U-boot after any changes.
+    1)bootdelay : Defines number of seconds U-Boot waits before executing default boot command bootcmd. It allows the user to enter into uboot prompt if pressed any key within that time. 
+    2)bootcmd : It is a default command/script that U-Boot executes automatically after bootdelay expires. Defines how the system boots from secondary memory. 
+    Eg: bootcmd=ext4load mmc 0:1 0x8000 zImage; \
+                ext4load mmc 0:1 0x10000 bcm2710-rpi-3-b.dtb; \
+                bootz 0x8000 - 0x100000
+    3)bootargs : This variable contains list of command-line arguments that are passed to kernel at startup.they define kernel's behaviour like root filesystem,debug etc.
+     Eg : bootargs=console=ttyAMA0,115200 root=/dev/mmcblk0p2 rw
+    4)loadaddr : This variable defines default memory address in RAM where U-Boot will load a file.
+    5)fdtaddr : This variable specifies memory address where DTB is to be loaded.
+    6)fdtfile : This variable specifies the name of DTB file to be loaded from storage.
+ 

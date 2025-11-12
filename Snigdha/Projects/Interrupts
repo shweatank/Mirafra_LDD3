@@ -1,0 +1,71 @@
+Interrupt : It is an electronic signal produced by hardware that stops current flow of execution and control is shifted to interrupt handler/ISR.
+
+Interrupt Handler : It is a software/piece of code within OS's kernel and whose function is to respond for interrupt signal generated   by hardware device.
+
+Interrupt Controller : It is a simple chip that multiplexes multiple lines into a single line to the processor.
+
+Polling : It is a process of continuously monitoring all devices connected to processor and handle that particular device if any event is triggered.
+
+Exception : It is a synchronuous interrupt produced by processor while executing any instructions like divide by zero / page fault etc.
+
+Maskable and Non-Maskable Interrupts :
+   *Maskable Int can be disabled/ignored temporarily by CPU to provide control over when to handle certain events. 
+   *Non-Maskable Int can't ignored/disabled by CPU under any circumstances and need to be handled immediately.Priority driven. 
+ 
+** How Interrupt is handled **
+   1)Hardware generates an electronic signal triggering an interrupt and same h/w stores some critical info like PC and status register that have current state onto memory area called Interrupt stack.
+   2)Respective interrupt handler comes into picture and sends to interrupt controller.
+   3)The controller signals the processor.
+   4)Processor stops what it's doing and notifies OS.
+   5)OS uses a unique interrupt number to identify devcie that caused interrupt.
+   6)The OS kernel then invokes correct interrupt handler to service the device. 
+   7)Kernel saves additional info like state of general purpose registers onto interrupt stack. This whole set of registers is called interrupt context.  
+**Interrupt handlers are atomic because they execute to completion without being interrupted by other events or other interrupts which means independent on other events. They prevent race around conditions and dead locks. 
+
+Process context : This is a normal state of system where user applications are running. In this context, process can block or sleep allowing other processes to do their job.
+
+Interrupt Context : This is a temporary, highly constrained state the kernel enters when interrupt occurs.In this context, code can't block or sleep which makes system unresponsive.
+
+** Interrupt context is split into two halves like top half and bottom half to prevent system delays and unstability.
+Top Half : Runs in interrupt context. This is a code that runs immediately when an interrupt occurs. It's job is to acknowledge interrupt and clear hardware device's state to prevent it from generating another interrupt. 
+Bottom Half : Runs in process context. This is a deferred part of interrupt handling.It is scheduled to run at convenient time after top half finishes and interrupts have been re-enabled. All time consuming tasks such as processing data is done here .
+
+           Top Half ---> Receives interrupt signal,acknowledges it,sends to bottom half
+           Bottom Half ----> Processes interrupt data 
+---API's for Interrupt Program:------
+  * request_irq(unsigned int irq,irq_handler_t handler,unsigned long flags,const char *name,void *dev_id); -----> Registers an irq with kernel
+   
+              irq -----> number to allocate
+              handler ----> Interrupt handler function invoked whenever OS receives interrupt. Returns IRQ_HANDLED, if procesing completed and IRQ_NONE if fails.
+              flags ----> can be zero or bit mask one of flags like IRQF_DISABLED (set,when kernel wants to disable all interrupts when xecuting this one),IRQF_TIMER(set if user want tomake this handler process interrupts system timer),IRQF_SHARED(specifies to share interrupt line among multiples interrupts) etc.
+              name ----> Device name 
+              dev_id ----> dev provides an unique cookie to enable removal of only desired int handler from interrupt line .
+   * free_irq(unsigned int irq,void *dev_id) -----> Releases irq 
+   *enable_irq(unsigned int irq) ------> Re-enables the interrupt
+   *disable_irq(unsigned int irq) ------> Disables irq from issuing interrupt.
+   *in_irq() ------> return true if in interrupt handler
+   *in_interrupt() -------> returns true if in interrupt hanlder or bottom half 
+
+
+Workqueue : 
+   *It is a flexible mechanism in kernel that schedules tasks to be executed in process context. It is a form of deferring work into kernel thread.
+   *Can be single threaded or multi-threaded.
+   *It is used in the case where any deferred work needs to wait for resources, can sleep or block, perform any other operations.
+
+Tasklet :
+   *It is a bottom half mechanism that runs in special non pre-emtiable context called interrupt context.
+   *High level abstraction built on softirqs itself.Used in device drivers. 
+   *It is faster and more light weight as only stack segment is created if tasklet is created.
+   *Only a single tasklet can run on single CPU. If you want to run multiple tasklets, we can run on different CPU's concurrently.
+   *It is used for small, quick, non-blocking tasks which need to be run immediately after top half finishes.
+
+Softirq :
+   *It is a low level,task-deferred mechanism that runs in interrupt context and is foundation for building tasklets.
+   *It is used for complex, high frequency and parallel tasks like networking, timers which need high performance.
+   *The same softirq type can be run on multiple CPU's simultaneously.
+   
+ThreadedIRQ :
+   *It is bottom half mechanism where an irq handler itself runs in kernel thread.
+   *It is used for the tasks where drivers can sleep inside irq handler.Perform blocking operations inside their interrupt handling.
+
+ 

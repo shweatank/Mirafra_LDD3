@@ -1,0 +1,95 @@
+1)Implement a kernel driver that reads properties from the device tree.
+
+ * In kernel driver probe function, use of_property_read_string API to read properties from dts file.
+        of_property_read_string(pdev->dev.of_node, "gpio-names", &name);
+        
+ * In dts file, add the properties like register address(for example) so that kernel driver code parses and shows messages in dmesg. 
+ 
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2711";
+	
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			gpio_led_node: gpio_led@0 {
+				compatible = "rpi,gpio_led_blink";
+				status="okay";
+				reg =<0x1234>; // Added property
+				gpios = <&gpio 17 0>;
+				gpio-names = "led";
+			};
+		};
+	};
+};
+
+  * After inserting module, check for the properties in dmesg.
+  
+2)Enable and configure pstore for persistent kernel crash log capture.
+
+   * Check if pstore is enabled or not. 
+      grep PSTORE /boot/config-$(uname -r)
+      
+      If you see output like this, pstore is already enabled:
+       CONFIG_PSTORE=y
+       CONFIG_PSTORE_RAM=y
+       CONFIG_PSTORE_RAM_SIZE=0x40000
+   * Append the following line in /boot/firmware/cmdline.txt(in single line): 
+  ramoops.mem_address=0x3EB00000 ramoops.mem_size=0x100000 ramoops.record_size=0x20000 ramoops.console_size=0x20000
+   *After adding above line, reboot the system.
+   *Check if memory is allocated after rebooting:
+        dmesg | grep -i ramoops  ----> It will show ramoops has allocated memory in RAM.
+    * Check a mount point and mount pstore file system 
+        sudo mkdir -p /sys/fs/pstore
+        sudo mount -t pstore pstore /sys/fs/pstore
+    * Write any kernel driver code which causes kernel crash/ OOPS situation (deferencing null pointer) and reboot.
+    * Check the logs in /sys/fs/pstore path.
+
+3)Collect and analyze system logs using dmesg and journalctl.
+
+   *We already know how to collect logs using dmesg and it is same by using journalctl also.
+        sudo journalctl    ----> Display all logs
+        sudo journalctl -r ----> Displays all logs from recent to old
+        sudo journalctl -k ----> Displays only kernel messages
+        sudo journalctl -p ----> To display logs based on priority like warning, oops, panic etc.
+        
+4)Automate basic error detection from logs using scriptable filters.
+   * Whatever commands we have used above, all commands are kept in shell script and saved to particular file based on time stamp.
+****Basic shell script to save logs to particular file****
+   
+#!/bin/bash
+
+# File: check_errors.sh
+# Purpose: Scan kernel logs and pstore logs for errors
+
+# 1. Kernel logs from current boot
+echo "=== Kernel logs from current boot ==="
+journalctl -k -b | grep -iE "error|fail|panic|oops"
+
+# 2. Kernel logs from previous boot
+echo "=== Kernel logs from previous boot ==="
+journalctl -k -b -1 | grep -iE "error|fail|panic|oops"
+
+# 3. pstore logs
+if [ -d /sys/fs/pstore ]; then
+    echo "=== pstore logs ==="
+    for f in /sys/fs/pstore/*; do
+        echo "--- $f ---"
+        cat "$f"
+    done
+else
+    echo "pstore not mounted"
+fi
+
+***To see saved logs***
+
+   ->sudo crontab -e
+   ->0 * * * * /home/pi/check_errors.sh >> /home/pi/error_log.txt 2>&1
+ 
+ Errors are stored into /home/pi/error_log.txt every hour.
+ 
+
+      
+ 
