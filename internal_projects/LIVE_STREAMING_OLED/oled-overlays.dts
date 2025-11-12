@@ -1,0 +1,28 @@
+/ {
+	/* Optional fixed regulator to power OLED */
+	reg_oled: regulator-oled {
+		compatible = "regulator-fixed";
+		regulator-name = "oled-vbat";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		gpio = <&gpio 23 0>; /* BCM GPIO23 as enable (optional) */
+		enable-active-high;
+	};
+};
+
+&i2c1 {
+	status = "okay";
+
+	oled@3c {
+		compatible = "acme,ssd1306-fb";
+		reg = <0x3c>;          /* I2C address */
+		width = <128>;
+		height = <64>;         /* must be multiple of 8 */
+		/* For SH1106 panels uncomment next line: */
+		/* col-offset = <2>; */
+
+		reset-gpios = <&gpio 17 GPIO_ACTIVE_LOW>; /* optional reset pin */
+		vbat-supply = <&reg_oled>;                /* optional */
+	};
+};
+

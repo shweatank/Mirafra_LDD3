@@ -1,0 +1,46 @@
+/*
+ * oled.dts - Device Tree Source for I2C OLED Display
+ * 
+ * Add this to your board's device tree or create a device tree overlay
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+    
+    fragment@0 {
+        target = <&i2c1>;  /* Change to your I2C bus (i2c0, i2c1, etc.) */
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+            
+            oled: oled@3c {
+                compatible = "solomon,ssd1306";
+                reg = <0x3c>;  /* I2C address - 0x3c or 0x3d */
+                width = <128>;
+                height = <64>;
+                status = "okay";
+            };
+        };
+    };
+};
+
+/* Alternative: Direct integration into main device tree (without overlay)
+ * Add this directly to your board's .dts file:
+ 
+&i2c1 {
+    status = "okay";
+    
+    oled@3c {
+        compatible = "solomon,ssd1306";
+        reg = <0x3c>;
+        width = <128>;
+        height = <64>;
+        status = "okay";
+    };
+};
+
+*/

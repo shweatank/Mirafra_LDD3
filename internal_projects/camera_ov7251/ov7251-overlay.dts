@@ -1,0 +1,94 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2711"; // Raspberry Pi 4
+
+    fragment@0 {
+        target = <&i2c1>;
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+
+            ov7251: ov7251@60 {
+                compatible = "ovti,ov7251";
+                reg = <0x60>;
+                status = "okay";
+
+                clocks = <&ov7251_clk>;
+                clock-names = "xclk";
+
+                reset-gpios = <&gpio 5 1>; /* GPIO5, active low */
+                pwdn-gpios = <&gpio 6 0>;  /* GPIO6, active high */
+
+                port {
+                    ov7251_out: endpoint {
+                        remote-endpoint = <&csi_in>;
+                        clock-lanes = <0>;
+                        data-lanes = <1>;
+                        link-frequencies = /bits/ 64 <456000000>;
+                    };
+                };
+            };
+        };
+    };
+
+    fragment@1 {
+        target = <&csi1>;
+        __overlay__ {
+            #address-cells = <1>;
+            #size-cells = <0>;
+            status = "okay";
+
+            port {
+                #address-cells = <1>;
+                #size-cells = <0>;
+
+                csi_in: endpoint@0 {
+                    reg = <0>;
+                    remote-endpoint = <&ov7251_out>;
+                    clock-lanes = <0>;
+                    data-lanes = <1>;
+                };
+            };
+        };
+    };
+
+    fragment@2 {
+        target-path = "/";
+        __overlay__ {
+            ov7251_clk: camera-clk {
+                compatible = "fixed-clock";
+                #clock-cells = <0>;
+                clock-frequency = <24000000>;
+            };
+        };
+    };
+
+    fragment@3 {
+        target = <&i2c1_pins>;
+        __overlay__ {
+            brcm,pins = <2 3>;
+            brcm,function = <4>; /* ALT0 for I2C */
+            brcm,pull = <2>;     /* Pull-up */
+        };
+    };
+
+    fragment@4 {
+        target = <&gpio>;
+        __overlay__ {
+            camera_pins: camera_pins {
+                brcm,pins = <5 6>;
+                brcm,function = <1>; /* Output */
+                brcm,pull = <0>;     /* No pull */
+            };
+        };
+    };
+
+    __overrides__ {
+        i2c_addr = <&ov7251>,"reg:0";
+        reset_gpio = <&ov7251>,"reset-gpios:4";
+        pwdn_gpio = <&ov7251>,"pwdn-gpios:4";
+    };
+};
