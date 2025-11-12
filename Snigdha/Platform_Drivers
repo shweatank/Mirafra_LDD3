@@ -1,0 +1,32 @@
+Platform Bus : 
+        It is a virtual bus which helps to interact with devices that are not on standard buses and are directly integrated onto Soc.
+
+Platform Device:
+        It is a software representation of hardware components.
+
+Platform Driver:
+       It is a type of driver used for devices which are not automatically discoverable to kernel and typically in-built on Soc like UART,I2C,SPI etc .
+
+----Interaction between Platform devices and Platform Drivers----
+
+* Both device and driver should be registered with kernel first either manually or using device tree. 
+
+*Platform device struct contains information like device name, unique identifier, device resources and device specific data. Platform driver struct contains information like name matching device's name and set of function pointers like probe. 
+
+*Probe() is the entry point for driver to interact with device.
+
+*After registering,the kernel attempts to match by comparing name in both of them . If matched, the driver is considered as bound to device . 
+
+*In device tree,compatible is key property string used to match driver and device. 
+
+*In driver code, of_match_table conatins the device name . That should be matched with name given in compatible string of device tree. 
+
+
+
+Differences between Platform, Block and Character device drivers:
+
+Platform drivers are responsible for probing and initializing hardware that are not not discoverable by kernel directly. They don't provide any user interface for operations. They configure hardware and hands over data transfer duties to higher level driver.
+
+Block Driver manages the devices that handle data in fixed size blocks like hard drives,SSDs. They read or write entire blocks of data. User space applications can access block devices through files like /dev/sda/.
+
+Character Driver mnages devices that handle data in stream of bytes. All read or write operations are done byte by byte. User applications can access through files like /dev/ttyS0 etc.
