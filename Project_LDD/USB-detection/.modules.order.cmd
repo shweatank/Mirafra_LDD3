@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Project_TrainingMirafra/USB-detection/modules.order := {   echo /home/mirafra/Project_TrainingMirafra/USB-detection/usb.o; :; } > /home/mirafra/Project_TrainingMirafra/USB-detection/modules.order

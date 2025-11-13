@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Project_TrainingMirafra/USB-detection/usb.ko := ld -r -m elf_x86_64 -z noexecstack --build-id=sha1  -T scripts/module.lds -o /home/mirafra/Project_TrainingMirafra/USB-detection/usb.ko /home/mirafra/Project_TrainingMirafra/USB-detection/usb.o /home/mirafra/Project_TrainingMirafra/USB-detection/usb.mod.o

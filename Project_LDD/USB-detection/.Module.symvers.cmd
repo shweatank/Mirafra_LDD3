@@ -1,0 +1,1 @@
+savedcmd_/home/mirafra/Project_TrainingMirafra/USB-detection/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Project_TrainingMirafra/USB-detection/Module.symvers -T /home/mirafra/Project_TrainingMirafra/USB-detection/modules.order -i Module.symvers -e 
