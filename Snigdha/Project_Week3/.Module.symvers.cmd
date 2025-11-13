@@ -1,1 +1,0 @@
-savedcmd_/home/mirafra/Desktop/Snigdha/Snigdha/Project_Week3/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week3/Module.symvers -T /home/mirafra/Desktop/Snigdha/Snigdha/Project_Week3/modules.order -i Module.symvers -e 
