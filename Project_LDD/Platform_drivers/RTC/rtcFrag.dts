@@ -1,0 +1,24 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "ti,beaglebone", "ti,beaglebone-green";
+
+    part-number = "BB-RTC-MMAP";
+    version = "00A0";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            rtc_example: rtc@44e3e000 {
+                compatible = "ti,am335x-rtc";
+                reg = <0x44e3e000 0x1000>;
+                status = "okay";
+                clocks = <&clk_32768_ck>;
+                clock-names = "fck";
+                interrupts = <75 0>, <76 0>; /* RTC alarms */
+                system-power-controller;
+            };
+        };
+    };
+};

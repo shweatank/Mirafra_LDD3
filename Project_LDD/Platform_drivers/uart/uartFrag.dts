@@ -1,0 +1,18 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    compatible = "brcm,bcm2835";
+
+    fragment@0 {
+        target-path = "/";
+        __overlay__ {
+            uart_platform: uart@3f201000 {
+                compatible = "custom,uart";
+                reg = <0x3f201000 0x1000>;
+                status = "okay";
+            };
+        };
+    };
+};
+
