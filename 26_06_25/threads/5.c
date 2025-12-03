@@ -6,7 +6,7 @@
 int counter = 0;
 
 // Mutex to prevent race conditions
-pthread_spinlock_t lock;
+pthread_spinlock_t spinlock;
 
 // Thread function to increment the counter
 void* increment_thread(void* arg) {
